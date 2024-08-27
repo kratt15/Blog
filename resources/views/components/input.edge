@@ -1,4 +1,15 @@
 <div class="form-group">
   <label for="{{name}}"> {{label}} </label>
-  <input type="{{type || 'text'}}" name="{{name}}" id="{{name}}" class="{{cls || 'form-control'}}">
+  @if(type=='file')
+  <input type="{{type || 'text'}}" accept="{{accept}}" name="{{name}}" id="{{name}}" class="{{cls || 'form-control'}}">
+ @else
+
+ <input type="{{type || 'text'}}" name="{{name}}" id="{{name}}" class="{{cls || 'form-control'}}">
+  @end
+
 </div>
+@inputError(name)
+  @each(message in $messages)
+    <p class="text-danger">{{ message }}</p>
+  @end
+@end

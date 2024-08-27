@@ -23,7 +23,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare password: string
 
   @column()
-  declare thumbnail: string
+  declare thumbnailUrl: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
