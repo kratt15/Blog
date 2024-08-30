@@ -1,5 +1,5 @@
 import User from '#models/user'
-import { registerUserValidator } from '#validators/auth'
+import { loginUserValidator, registerUserValidator } from '#validators/auth'
 import { cuid } from '@adonisjs/core/helpers'
 import type { HttpContext } from '@adonisjs/core/http'
 import app from '@adonisjs/core/services/app'
@@ -17,22 +17,7 @@ export default class AuthController {
     return view.render('pages/auth/login')
   }
 
-//  async handleRegister({request,session,response}: HttpContext){
 
-//    const{username,email,thumbnail,password} = await request.validateUsing(registerUserValidator)
-//     if(!thumbnail){
-//         const png = toPng(username,100)
-//          await writeFile(`public/users/${username}.png`, png)
-//     }else{
-//       await thumbnail.move(app.makePath("public/users"),{name:`${cuid()}.${thumbnail.extname}`})
-//     }
-//     const filePath = `users/${thumbnail?.fileName || username+".png"}`
-//     await User.create({username,email,password,thumbnail:filePath})
-//     session.flash('success','Inscription reussie !!')
-//     return response.redirect().toRoute('login')
-//     //  console.log(res);
-//     //   return res
-//    }
 async handleRegister({ request, session, response }: HttpContext) {
   try {
     const { username, email,  password, thumbnail} = await request.validateUsing(registerUserValidator);
@@ -66,5 +51,21 @@ async handleRegister({ request, session, response }: HttpContext) {
 
 }
 
+ async handleLogin({request,auth,session,response}: HttpContext) {
 
+    const { email, password } = await request.validateUsing(loginUserValidator);
+      const user = await User.verifyCredentials(email, password);
+
+      await auth.use('web').login(user)
+
+      session.flash('success', 'Connexion reussie')
+      return response.redirect().toRoute('home')
+    }
+
+
+    async logout({auth, response,session}: HttpContext) {
+      await auth.use('web').logout()
+      session.flash('success', 'Deconnexion reussie')
+      return response.redirect().toRoute('login')
+    }
 }

@@ -3,7 +3,7 @@
 <h1 class="text-center">
 {{title}}
 </h1>
-<form action="" method="post"  class="w-75 mx-auto p-3 bg-light rounded">
+<form action="" method="post" enctype="multipart/form-data" class="w-75 mx-auto p-3 bg-light rounded">
   {{ csrfField() }}
 @!component('components/input', { name:'username', label:'Nom utilisateur' })
 @!component('components/input', { name:'email', label:'email',type:'email' })
@@ -14,5 +14,8 @@
 <button class="btn btn-outline-info mt-2" type="submit"> {{title}} </button>
 
 </form>
-
+<div class="w-50 mx-auto">
+  <p class="text-center">OU AVEC</p>
+  <a class="btn btn-outline-info mt-2 d-block mx-auto" href="{{route('github.redirect')}}">Github</a>
+</div>
 @include('partials/footer')
