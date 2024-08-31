@@ -30,3 +30,10 @@ export const loginUserValidator = vine.compile(
 
   })
 )
+
+export const forgotPasswordValidator = vine.compile(
+  vine.object({
+
+    email: vine.string().email(),
+  })
+)
