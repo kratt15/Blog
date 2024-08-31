@@ -27,6 +27,10 @@ router.delete('/logout',[AuthController,'logout'])
       .as('logout').use(middleware.auth())
 
 router.get('/forgot-password',[ResetPasswordController,'forgotPassword']).as('forgot-password').use(middleware.guest())
+router.post('/forgot-password',[ResetPasswordController,'handleForgotPassword']).use(middleware.guest())
+
+router.get('/reset-password',[ResetPasswordController,'resetPassword']).as('reset-password').use(middleware.guest())
+router.post('/reset-password',[ResetPasswordController,'handleResetPassword']).as('handle-reset-password').use(middleware.guest())
 
 router.get('/github/redirect',[SocialController,'githubRedirect']).use(middleware.guest()).as('github.redirect')
 
