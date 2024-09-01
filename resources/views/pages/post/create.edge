@@ -5,9 +5,9 @@
 </h1>
 <form action="" method="post" enctype="multipart/form-data" class="w-75 mx-auto p-3 bg-light rounded">
   {{ csrfField() }}
-@!component('components/input', { name:'title', label:'Titre' })
-@!component('components/input', { name:'thumbnail', label:'Miniature',type:'file', accept:'.png,.jpg,.jpeg' })
-@!component('components/input', { name:'content', label:'contenu',type:'textarea' })
+@!component('components/input', { name:'title', label:'Titre',value:old('title') })
+@!component('components/input', { name:'thumbnail', label:'Miniature',type:'file', accept:'.png,.jpg,.jpeg',value:old('thumbnail') })
+@!component('components/input', { name:'content', label:'Contenu',type:'textarea',value:old('content') })
 
 <button class="btn btn-outline-info mt-2" type="submit"> {{title}} </button>
 
