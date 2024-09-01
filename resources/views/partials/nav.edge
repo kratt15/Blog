@@ -17,7 +17,7 @@
               { username:auth.use('web').user.username,
                 thumbnailUrl:auth.use('web').user.thumbnailUrl
               })
-
+        <a href="{{route('post.create')}}" class="btn btn-outline-info">Publier ?</a>
                   <form action="{{route('logout')}}?_method=DELETE" method="post">
                           {{ csrfField() }}
                           <button type="submit" class="btn btn-outline-warning">Deconnexion</button>

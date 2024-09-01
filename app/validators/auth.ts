@@ -1,4 +1,4 @@
-import Token from '#models/token'
+
 import vine from '@vinejs/vine'
 
 export const registerUserValidator = vine.compile(

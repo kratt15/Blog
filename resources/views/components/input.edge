@@ -2,9 +2,13 @@
   <label for="{{name}}"> {{label}} </label>
   @if(type=='file')
   <input type="{{type || 'text'}}" accept="{{accept}}" name="{{name}}" id="{{name}}" class="{{cls || 'form-control'}}">
+ @elseif(type=='textarea')
+
+  <textarea name="{{name}}" id="{{name}}" class="{{cls || 'form-control'}}" cols="30" rows="10"> {{value||''}} </textarea>
  @else
 
  <input type="{{type || 'text'}}"  name="{{name}}" id="{{name}}" value="{{value || ''}}" class="{{cls || 'form-control'}}">
+
   @end
 
 </div>
