@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.string('slug').notNullable().unique()
       table.string('thumbnail').notNullable()
       table.text('content').notNullable()
-      table.string('user_id').references('users.id').onDelete('CASCADE')
+      table.integer('user_id').references('users.id').onDelete('CASCADE')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

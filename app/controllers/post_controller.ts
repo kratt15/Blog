@@ -17,7 +17,18 @@ export default class PostController {
   }
 
 
-  async index({}: HttpContext) {}
+  async index({view,request}: HttpContext) {
+    const page = request.input('page', 1)
+    const limit = 2
+    const posts = await Post
+                        .query()
+                        .select('id','title','thumbnail','slug','user_id')
+                        .preload('user', (q) => q.select('id','username'))
+                        .orderBy('created_at','desc')
+                        .paginate(page,limit)
+     return view.render('pages/home', {posts})
+
+  }
 
   /**
    * Display form to create a new record

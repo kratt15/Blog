@@ -11,7 +11,7 @@ export const storePostValidator = vine.compile(
     thumbnail: vine.file({
       extnames:['jpg','png','jpeg'],
       size:'10mb'
-    }),
+    }).optional(),
    content: vine.string(),
 
   })
