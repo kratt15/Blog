@@ -9,7 +9,7 @@ import {Marked} from 'marked'
 import { markedHighlight } from "marked-highlight";
 import hljs from 'highlight.js';
 import { unlink } from 'fs/promises'
-import { alterPost } from '#abilities/main'
+// import { alterPost } from '#abilities/main'
 import PostPolicy from '#policies/post_policy'
 
  @inject()
