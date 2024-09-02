@@ -13,10 +13,10 @@
         <a href="{{route('post.show', {slug : post.slug, id :post.id})}}" class="btn btn-primary w-100">Lire l'article</a>
               <div class="d-flex mt-3 justify-content-between">
                 <a href="{{route('post.edit', {id :post.id})}}" class="btn btn-outline-warning w-100 ">Modifier l'article</a>
-                {{--  <form action="{{route('post.delete', {id: post.id})}}?_method=DELETE" method="post">
+                <form action="{{route('post.delete', {id: post.id})}}?_method=DELETE" method="post">
                   {{ csrfField() }}
                   <button class="btn btn-outline-danger" type="submit">Supprimer</button>
-                </form>  --}}
+                </form>
               </div>
       </div>
     </div>
