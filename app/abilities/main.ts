@@ -12,12 +12,14 @@
 |
 */
 
+import Post from '#models/post'
+import User from '#models/user'
 import { Bouncer } from '@adonisjs/bouncer'
 
 /**
  * Delete the following ability to start from
  * scratch
  */
-export const editUser = Bouncer.ability(() => {
-  return true
+export const alterPost = Bouncer.ability((user:User,post:Post) => {
+  return user.id === post.userId
 })
