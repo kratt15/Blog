@@ -36,7 +36,9 @@ router.get('/login',[AuthController,'login'])
       .as('login')
       .use(middleware.guest())
 
-router.post('/login',[AuthController,'handleLogin']).use(middleware.guest())
+router.post('/login',[AuthController,'handleLogin'])
+      .use(middleware.guest())
+      .as('handle.login')
 
 router.delete('/logout',[AuthController,'logout'])
       .as('logout').use(middleware.auth())

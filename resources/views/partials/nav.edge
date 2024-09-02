@@ -1,15 +1,15 @@
 @eval(await auth.use('web').check())
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{route('home')}}">
       {{--  <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">  --}}
       Mon blog
     </a>
     <div>
       @if(!auth.use('web').isAuthenticated)
 
-      <a href="{{route('register')}}" class="btn btn-outline-info"> Inscription</a>
-      <a href="{{route('login')}}" class="btn btn-outline-info">Connexion</a>
+      <a href="{{route('register')}}" class="btn btn-outline-info" up-target=".main" > Inscription</a>
+      <a href="{{route('login')}}" class="btn btn-outline-info" up-target=".main">Connexion</a>
 
       @else
       <div class="d-flex gap-3 align-items-center">
@@ -17,7 +17,7 @@
               { username:auth.use('web').user.username,
                 thumbnailUrl:auth.use('web').user.thumbnailUrl
               })
-        <a href="{{route('post.create')}}" class="btn btn-outline-info">Publier ?</a>
+        <a href="{{route('post.create')}}" class="btn btn-outline-info" up-layer="new" up-mode="drawer" up-size="full" >Publier ?</a>
                   <form action="{{route('logout')}}?_method=DELETE" method="post">
                           {{ csrfField() }}
                           <button type="submit" class="btn btn-outline-warning">Deconnexion</button>
