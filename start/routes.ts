@@ -7,12 +7,18 @@
 |
 */
 
-import AuthController from '#controllers/auth_controller'
+
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
-import SocialController from '#controllers/social_controller'
-import ResetPasswordController from '#controllers/reset_password_controller'
-import PostController from '#controllers/post_controller'
+
+
+// nouvel forme d'importation
+
+const AuthController = () => import ('#controllers/auth_controller')
+const SocialController = () => import ('#controllers/social_controller')
+const ResetPasswordController = () => import ('#controllers/reset_password_controller')
+const PostController = () => import ('#controllers/post_controller')
+
 
 
 router.get('/',[PostController,'index'])
@@ -64,3 +70,15 @@ router.get('/posts/create',[PostController,'create'])
 
 router.post('/posts/create',[PostController,'store'])
       .use(middleware.auth())
+
+router.get('/posts/:slug/:id',[PostController,'show'])
+      .as('post.show')
+      .where('slug',router.matchers.slug())
+      .where('id',router.matchers.number())
+      
+router
+      .get('/posts/:id/edit', [PostController, 'edit'])
+      .as('post.edit')
+      .where('id', router.matchers.number())
+      .use(middleware.auth())
+

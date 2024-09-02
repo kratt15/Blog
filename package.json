@@ -64,8 +64,11 @@
     "better-sqlite3": "^11.2.1",
     "bootstrap": "^5.3.3",
     "edge.js": "^6.0.2",
+    "highlight.js": "^11.10.0",
     "jdenticon": "^3.3.0",
     "luxon": "^3.5.0",
+    "marked": "^14.1.0",
+    "marked-highlight": "^2.1.4",
     "reflect-metadata": "^0.2.2"
   },
   "hotHook": {
